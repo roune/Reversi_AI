@@ -1,0 +1,21 @@
+EXE=reversi
+
+.PHONY: all build check clean help
+
+all: build
+
+build:
+	@cd src && $(MAKE)
+	@cp -f src/$(EXE) .
+
+check: build
+	@cd test && $(MAKE)
+
+clean:
+	@cd src && $(MAKE) clean
+	@rm -f $(EXE)
+	
+help:
+	@echo "all: run the whole build of reversi"
+	@echo "reversi: builds from reversi.c and bitboard.c"
+	@echo "clean: remove all files produced by compilation"
